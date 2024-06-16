@@ -1,5 +1,6 @@
 package com.gearhead.domain.post;
 
+import com.gearhead.domain.BaseTimeEntity;
 import com.gearhead.web.dto.PostsDto;
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -9,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Posts {
+public class Posts extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
