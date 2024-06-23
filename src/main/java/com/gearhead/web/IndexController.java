@@ -1,5 +1,7 @@
 package com.gearhead.web;
 
+import com.gearhead.config.auth.LoginUser;
+import com.gearhead.config.auth.SessionUser;
 import com.gearhead.domain.post.Posts;
 import com.gearhead.service.PostsService;
 import lombok.RequiredArgsConstructor;
@@ -15,8 +17,11 @@ public class IndexController {
     private final PostsService postsService;
 
     @GetMapping("/")
-    public String index(Model model){
+    public String index(Model model, @LoginUser SessionUser sessionUser){
         model.addAttribute("posts", postsService.selectListDesc());
+        if(sessionUser!=null){
+            model.addAttribute("userName", sessionUser.getName());
+        }
         return "index";
     }
 

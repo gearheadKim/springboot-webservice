@@ -4,13 +4,8 @@ spring:
       hibernate:
         show_sql: true
 
-  h2:
-    console:
-      enabled: true
-
   profiles:
-    include: oauth
-
+    include: oauth, h2
 
 server:
   servlet:
